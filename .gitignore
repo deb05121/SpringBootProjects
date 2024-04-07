@@ -161,10 +161,13 @@ $RECYCLE.BIN/
 *.lnk
 
 ### IntelliJ IDEA ###
-.idea
-*.iws
+out/
+.idea/
+.idea_modules/
 *.iml
 *.ipr
+*.iws
+application.properties
 
 ### NetBeans ###
 /nbproject/private/
