@@ -4,6 +4,7 @@ import com.example.demo.model.Webshop;
 import com.example.demo.repository.WebshopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,18 +23,18 @@ public class WebshopRestController {
 
 
     @GetMapping("/getItemByName")
-    List<Webshop> getItemByName() {
-        return webshopRepository.findByNameOrName("barack", "körte");
+    List<Webshop> getItemByName(@RequestParam String name1, String name2) {
+        return webshopRepository.findByNameOrName(name1, name2);
     }
 
     @GetMapping("/getItemByPrice")
-    List<Webshop> getItemByPrice() {
-        return webshopRepository.findByPrice(1200);
+    List<Webshop> getItemByPrice(@RequestParam int price) {
+        return webshopRepository.findByPrice(price);
     }
 
     @GetMapping("/getItemByPriceAndQuantity")
-    List<Webshop> getItemByPriceAndQuantity() {
-        return webshopRepository.findByPriceAndQuantity(1200, 9);
+    List<Webshop> getItemByPriceAndQuantity(@RequestParam int price, int quantity) {
+        return webshopRepository.findByPriceAndQuantity(price, quantity);
     }
 
 }
