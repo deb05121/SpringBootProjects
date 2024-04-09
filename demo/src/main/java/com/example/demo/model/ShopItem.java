@@ -1,18 +1,19 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
 @Entity(name = "shopitems")
 @Getter
 @Setter
-public class Webshop {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class ShopItem {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "item_name")
     private String name;

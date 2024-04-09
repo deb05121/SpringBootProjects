@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Webshop;
-import com.example.demo.repository.WebshopRepository;
+import com.example.demo.model.ShopItem;
+import com.example.demo.service.WebshopService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,31 +11,36 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class WebshopRestController {
 
     @Autowired
-    //private WebshopService webshopService;
-    private WebshopRepository webshopRepository;
 
-    @GetMapping("/getAllItem")
-    List<Webshop> getWebshopList(){
-        return webshopRepository.findAll();
+    private WebshopService webshopService;
+
+    @GetMapping("/getAllItems")
+    List<ShopItem> getWebshopList(){
+        log.info("Finding items of Web shop.");
+        return webshopService.findAllItems();
     }
 
 
     @GetMapping("/getItemByName")
-    List<Webshop> getItemByName(@RequestParam String name1, String name2) {
-        return webshopRepository.findByNameOrName(name1, name2);
+    List<ShopItem> getItemByName(@RequestParam String name1, String name2) {
+        log.info("Finding item by name {} and {}", name1, name2);
+        return webshopService.findByTwoNames(name1, name2);
     }
 
     @GetMapping("/getItemByPrice")
-    List<Webshop> getItemByPrice(@RequestParam int price) {
-        return webshopRepository.findByPrice(price);
+    List<ShopItem> getItemByPrice(@RequestParam int price) {
+        log.info("Finding item by price {}", price);
+        return webshopService.findByPrice(price);
     }
 
     @GetMapping("/getItemByPriceAndQuantity")
-    List<Webshop> getItemByPriceAndQuantity(@RequestParam int price, int quantity) {
-        return webshopRepository.findByPriceAndQuantity(price, quantity);
+    List<ShopItem> getItemByPriceAndQuantity(@RequestParam int price, int quantity) {
+        log.info("Finding item by price {} and quantity {}", price, quantity);
+        return webshopService.findByPriceAndQuantity(price, quantity);
     }
 
 }
