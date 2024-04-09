@@ -16,15 +16,15 @@ public class WebshopService {
     public List<ShopItem> findByTwoNames(String name1, String name2){
         final var items = webshopRepository.findByNameOrName(name1, name2);
         if(items.isEmpty()){
-            throw new ItemNotFoundException("No item is found with name " + name1 + " and name " + name2);
+            throw new ItemNotFoundException("No item is found with name " + name1 + " and name " + name2 + "\n");
         }
         return items;
     }
 
     public List<ShopItem> findByPriceAndQuantity(int price, int quantity){
-        final var items = webshopRepository.findByNameOrName(price, quantity);
+        final var items = webshopRepository.findByPriceAndQuantity(price, quantity);
         if(items.isEmpty()){
-            throw new ItemNotFoundException("No item is found with price " + price + " and quantity " + quantity);
+            throw new ItemNotFoundException("No item is found with price " + price + " and quantity " + quantity + "\n");
         }
         return items;
     }
@@ -32,7 +32,7 @@ public class WebshopService {
     public List<ShopItem> findAllItems(){
         final var items = webshopRepository.findAll();
         if(items.isEmpty()){
-            throw new ItemNotFoundException("Webshop is empty.");
+            throw new ItemNotFoundException("Webshop is empty.\n");
         }
         return items;
     }
@@ -40,7 +40,7 @@ public class WebshopService {
     public List<ShopItem> findByPrice(int price){
         final var items = webshopRepository.findByPrice(price);
         if(items.isEmpty()){
-            throw new ItemNotFoundException("No item is found with price " + price);
+            throw new ItemNotFoundException("No item is found with price " + price + "\n");
         }
         return items;
     }

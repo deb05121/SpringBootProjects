@@ -55,7 +55,7 @@ class ShopItemTest {
         final Date date = null;
 
         //when
-        when(webshopRepository.findByNameOrName(priceOfItem, quantityOfItem)).thenReturn(
+        when(webshopRepository.findByPriceAndQuantity(priceOfItem, quantityOfItem)).thenReturn(
                 List.of(ShopItem.builder()
                         .id(1)
                         .name("banana")
@@ -63,7 +63,7 @@ class ShopItemTest {
                         .quantity(quantityOfItem)
                         .date(null)
                         .build()));
-        final var shopItems = webshopRepository.findByNameOrName(priceOfItem, quantityOfItem);
+        final var shopItems = webshopRepository.findByPriceAndQuantity(priceOfItem, quantityOfItem);
 
         //then
         Assertions.assertEquals(1, shopItems.size());
@@ -79,7 +79,7 @@ class ShopItemTest {
         final Date date = null;
 
         //when
-        when(webshopRepository.findByNameOrName(nameOfItemB, nameOfItemA)).thenReturn(
+        when(webshopRepository.findByPriceAndQuantity(nameOfItemB, nameOfItemA)).thenReturn(
                 List.of(ShopItem.builder()
                                 .id(1)
                                 .name(nameOfItemA)
@@ -95,7 +95,7 @@ class ShopItemTest {
                                 .date(null)
                                 .build())
         );
-        final var shopItems = webshopRepository.findByNameOrName(nameOfItemB, nameOfItemA);
+        final var shopItems = webshopRepository.findByPriceAndQuantity(nameOfItemB, nameOfItemA);
 
         //then
         Assertions.assertEquals(2, shopItems.size());

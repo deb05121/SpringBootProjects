@@ -25,20 +25,20 @@ public class WebshopRestController {
     }
 
 
-    @GetMapping("/getItemByName")
-    List<ShopItem> getItemByName(@RequestParam String name1, String name2) {
+    @GetMapping("/getItemsByName")
+    List<ShopItem> getItemsByName(@RequestParam String name1, String name2) {
         log.info("Finding item by name {} and {}", name1, name2);
         return webshopService.findByTwoNames(name1, name2);
     }
 
-    @GetMapping("/getItemByPrice")
-    List<ShopItem> getItemByPrice(@RequestParam int price) {
+    @GetMapping("/getItemsByPrice")
+    List<ShopItem> getItemsByPrice(@RequestParam int price) {
         log.info("Finding item by price {}", price);
         return webshopService.findByPrice(price);
     }
 
-    @GetMapping("/getItemByPriceAndQuantity")
-    List<ShopItem> getItemByPriceAndQuantity(@RequestParam int price, int quantity) {
+    @GetMapping("/getItemsByPriceAndQuantity")
+    List<ShopItem> getItemsByPriceAndQuantity(@RequestParam int price, int quantity) {
         log.info("Finding item by price {} and quantity {}", price, quantity);
         return webshopService.findByPriceAndQuantity(price, quantity);
     }
