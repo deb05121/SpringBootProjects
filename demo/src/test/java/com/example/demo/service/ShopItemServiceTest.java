@@ -1,8 +1,7 @@
-package com.example.demo.controller;
+package com.example.demo.service;
 
 import com.example.demo.model.ShopItem;
 import com.example.demo.repository.WebshopRepository;
-import com.example.demo.service.WebshopService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +15,7 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class ShopItemTest {
+class ShopItemServiceTest {
     @InjectMocks
     private WebshopService webshopService;
 
@@ -79,7 +78,7 @@ class ShopItemTest {
         final Date date = null;
 
         //when
-        when(webshopRepository.findByPriceAndQuantity(nameOfItemB, nameOfItemA)).thenReturn(
+        when(webshopRepository.findByNameOrName(nameOfItemB, nameOfItemA)).thenReturn(
                 List.of(ShopItem.builder()
                                 .id(1)
                                 .name(nameOfItemA)
@@ -95,7 +94,7 @@ class ShopItemTest {
                                 .date(null)
                                 .build())
         );
-        final var shopItems = webshopRepository.findByPriceAndQuantity(nameOfItemB, nameOfItemA);
+        final var shopItems = webshopRepository.findByNameOrName(nameOfItemB, nameOfItemA);
 
         //then
         Assertions.assertEquals(2, shopItems.size());
