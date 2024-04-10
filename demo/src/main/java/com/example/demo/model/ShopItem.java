@@ -13,13 +13,17 @@ import java.util.Date;
 @Builder
 public class ShopItem {
     @Id
+    /* into MySQL Workbench:
+    CREATE TABLE shopitems_seq ( next_val bigint DEFAULT NULL);
+    INSERT INTO shopitems_seq VALUES (1);
+     */
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "item_name")
+    //@Column(name = "item_name")
     private String name;
-    @Column(name = "item_price")
+    //@Column(name = "item_price")
     private int price;
     private int quantity;
-    @Column(name = "date_added")
+    //@Column(name = "date_added")
     private Date date;
 }

@@ -45,4 +45,20 @@ public class WebshopService {
         return items;
     }
 
+    public ShopItem addItem(ShopItem shopItem){
+        return webshopRepository.save(shopItem);
+    }
+
+    public void deleteShopItem(long id){
+        webshopRepository.deleteById(id);
+    }
+
+    public void updateShopItem(long id, ShopItem shopItem) {
+        final var itemToUpdate = webshopRepository.findById(id).orElseThrow(()-> new ItemNotFoundException("No shop item found with id "));
+        itemToUpdate.setName(shopItem.getName());
+        itemToUpdate.setPrice(shopItem.getPrice());
+        itemToUpdate.setQuantity(shopItem.getQuantity());
+        itemToUpdate.setDate(shopItem.getDate());
+
+    }
 }
