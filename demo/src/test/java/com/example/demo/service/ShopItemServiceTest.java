@@ -38,7 +38,7 @@ class ShopItemServiceTest {
                         .quantity(1)
                         .date(null)
                         .build()));
-        final var shopItems = webshopRepository.findByPrice(priceOfItem);
+        final var shopItems = webshopService.findByPrice(priceOfItem);
 
         //then
         Assertions.assertEquals(1, shopItems.size());
@@ -62,7 +62,7 @@ class ShopItemServiceTest {
                         .quantity(quantityOfItem)
                         .date(null)
                         .build()));
-        final var shopItems = webshopRepository.findByPriceAndQuantity(priceOfItem, quantityOfItem);
+        final var shopItems = webshopService.findByPriceAndQuantity(priceOfItem, quantityOfItem);
 
         //then
         Assertions.assertEquals(1, shopItems.size());
@@ -94,7 +94,7 @@ class ShopItemServiceTest {
                                 .date(null)
                                 .build())
         );
-        final var shopItems = webshopRepository.findByNameOrName(nameOfItemB, nameOfItemA);
+        final var shopItems = webshopService.findByTwoNames(nameOfItemB, nameOfItemA);
 
         //then
         Assertions.assertEquals(2, shopItems.size());
