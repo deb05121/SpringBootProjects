@@ -15,7 +15,7 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class ShopItemServiceTest {
+class WebshopServiceTest {
     @InjectMocks
     private WebshopService webshopService;
 
